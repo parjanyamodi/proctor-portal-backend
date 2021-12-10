@@ -4,6 +4,6 @@ const User = function(user)
     this.role = user.role
 }
 
-User.findUser = (gid, result) =>{
+User.find = (gid, result) =>{
     result(null, "Fetching data")
 }
