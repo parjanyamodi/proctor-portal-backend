@@ -1,3 +1,4 @@
+const sql = require('../db/db')
 const User = function(user)
 {
     this.gid = user.gid
