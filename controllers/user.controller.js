@@ -1,7 +1,7 @@
 const User = require('../models/user')
 
 exports.findUser = (req, res)=> {
-    User.find(req,params.gid, (err, data)=> {
+    User.find(req.params.gid, (err, data)=> {
         if (err)
         {
             if(err.type == "not_found")
@@ -16,5 +16,6 @@ exports.findUser = (req, res)=> {
                 })
             }
         }
+        else res.send(data)
     })
 }

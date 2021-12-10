@@ -5,5 +5,7 @@ const User = function(user)
 }
 
 User.find = (gid, result) =>{
-    result(null, "Fetching data")
+    result(null, `Fetching data of ${gid}`)
 }
+
+module.exports = User
