@@ -1,3 +1,5 @@
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Jeev@2019';
+flush privileges;
 -- Create the database
 show databases;
 drop database proctor_portal;
@@ -42,3 +44,5 @@ foreign key(cid) references Courses(cid) on update cascade, foreign key(usn) ref
 primary key(usn, cid, type, year));
 
 
+-- Values for Login table
+insert into login values("121212", "Student");
