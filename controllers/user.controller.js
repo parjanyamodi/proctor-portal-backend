@@ -1,7 +1,7 @@
 const User = require('../models/user')
 
 exports.findUser = (req, res)=> {
-    User.find(req.params.gid, (err, data)=> {
+    User.find(req.query['gid'], (err, data)=> {
         if (err)
         {
             if(err.type == "not_found")
@@ -68,6 +68,26 @@ exports.removeUser = (req, res)=> {
             {
                 res.send({
                     message: "User Not Removed"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
+exports.findAllUsers = (req, res)=> {
+    User.findAll((err, data) => {
+        if(err)
+        {
+            if(err.type == "not_retrived")
+            {
+                res.send({
+                    message: "User Not Retrived"
                 })
             }
             else{

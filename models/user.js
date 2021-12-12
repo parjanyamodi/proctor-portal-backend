@@ -110,4 +110,28 @@ User.remove = (gid, result) => {
 }
 
 
+User.findAll = (result) => {
+    var get_users = sql.query(`select * from login;`, (err, res)=>{
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_retrived"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Users Retrived")
+            console.log(get_users.sql)
+            res.message = "Users Retrived"
+            result(null, res)
+            return
+        }
+        err.type = "not_retrived"
+        result(err, null)
+        return
+    })
+}
+
 module.exports = User
