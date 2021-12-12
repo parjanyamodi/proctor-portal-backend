@@ -28,5 +28,30 @@ User.find = (gid, result) =>{
     })
 }
 
+User.create = (gid, role, result) => {
+    console.log(gid)
+    var create_user = sql.query(`insert into login values('${gid}', '${role}');`, (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_created"
+            result(err, null)
+            return
+        }
+        console.log(res.affectedRows)
+        if(res.affectedRows === 1)
+        {
+            console.log("User Created", res)
+            console.log(create_user.sql)
+            res.message = "User Created"
+            result(null, res)
+            return
+        }
+        err.type = "not_created"
+        result(err, null)
+        return
+    })
+}
+
 
 module.exports = User

@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 
 
 app.get("/", (req, res)=>{
-    // console.log(req)
+    console.log(req)
     var arr = {
         123: {
             name: "Jeevan",

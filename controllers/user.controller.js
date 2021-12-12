@@ -19,3 +19,23 @@ exports.findUser = (req, res)=> {
         else res.send(data)
     })
 }
+
+exports.createUser = (req, res)=> {
+    User.create(req.query['gid'], req.query['role'], (err, data) => {
+        if(err)
+        {
+            if(err.type == "not_created")
+            {
+                res.send({
+                    message: "User Not Created"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
