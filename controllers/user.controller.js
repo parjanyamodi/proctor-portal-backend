@@ -59,3 +59,23 @@ exports.updateUser = (req, res)=> {
         else res.send(data)
     })
 }
+
+exports.removeUser = (req, res)=> {
+    User.remove(req.query['gid'], (err, data) => {
+        if(err)
+        {
+            if(err.type == "not_removed")
+            {
+                res.send({
+                    message: "User Not Removed"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}

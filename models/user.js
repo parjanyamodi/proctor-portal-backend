@@ -39,7 +39,7 @@ User.create = (gid, role, result) => {
             return
         }
         // console.log(res.affectedRows)
-        if(res.affectedRows === 1)
+        if(res.affectedRows !== 0)
         {
             console.log("User Created")
             console.log(create_user.sql)
@@ -63,7 +63,7 @@ User.update = (gid, role, result) => {
             return
         }
         // console.log(res.affectedRows)
-        if(res.affectedRows === 1)
+        if(res.affectedRows !== 0)
         {
             console.log("User Updated")
             console.log(update_user.sql)
@@ -73,6 +73,38 @@ User.update = (gid, role, result) => {
         }
         err.type = "not_updated"
         result(err, null)
+        return
+    })
+}
+
+User.remove = (gid, result) => {
+    var remove_user = sql.query(`delete from login where gid=${gid};`, (err, res) =>{
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_removed"
+            result(err, null)
+            return
+        }
+        console.log(res)
+        if(res.affectedRows !== 0)
+        {
+            console.log("User Removed")
+            console.log(remove_user.sql)
+            res.message = "User Removed"
+            result(null, res)
+            return
+        }
+        if(res.affectedRows === 0)
+        {
+            console.log("User Not Found")
+            console.log(remove_user.sql)
+            var msg = {message : "User Not Found"}
+            result(msg, null)
+            return
+        }
+        // err.type = "not_removed"
+        // result(err, null)
         return
     })
 }

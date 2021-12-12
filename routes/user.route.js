@@ -6,4 +6,6 @@ module.exports = app => {
     app.post('/user', user.createUser)
 
     app.put('/user', user.updateUser)
+
+    app.delete('/user', user.removeUser)
 }
