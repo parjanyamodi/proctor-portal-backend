@@ -4,4 +4,6 @@ module.exports = app => {
     app.get('/user/:gid', user.findUser)
 
     app.post('/user', user.createUser)
+
+    app.put('/user', user.updateUser)
 }

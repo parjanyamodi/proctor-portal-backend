@@ -38,16 +38,40 @@ User.create = (gid, role, result) => {
             result(err, null)
             return
         }
-        console.log(res.affectedRows)
+        // console.log(res.affectedRows)
         if(res.affectedRows === 1)
         {
-            console.log("User Created", res)
+            console.log("User Created")
             console.log(create_user.sql)
             res.message = "User Created"
             result(null, res)
             return
         }
         err.type = "not_created"
+        result(err, null)
+        return
+    })
+}
+
+User.update = (gid, role, result) => {
+    var update_user = sql.query(`update login set role="${role}" where gid="${gid}";`, (err, res)=>{
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_updated"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows === 1)
+        {
+            console.log("User Updated")
+            console.log(update_user.sql)
+            res.message = "User Updated"
+            result(null, res)
+            return
+        }
+        err.type = "not_updated"
         result(err, null)
         return
     })
