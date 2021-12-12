@@ -28,16 +28,5 @@ User.find = (gid, result) =>{
     })
 }
 
-User.create = (gid, role, result)=> {
-    var create_user = sql.query(`insert into login values("${gid}", "${role}")`, (err, res)=>{
-        if (err)
-        {
-            console.log("There was an error inserting values into login table", err)
-            result(err, null)
-            return
-        }
-    })
-}
-
 
 module.exports = User

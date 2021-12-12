@@ -44,5 +44,12 @@ foreign key(cid) references Courses(cid) on update cascade, foreign key(usn) ref
 primary key(usn, cid, type, year));
 
 
+-- Create requests table
+create table requests(usn varchar(20), pid varchar(30), request_type varchar(10), request_data varchar(10000));
+
+
+-- Create table branch_change
+create table branch_change(initial_branch varchar(100), current_branch varchar(100));
+
 -- Values for Login table
 insert into login values("121212", "Student");
