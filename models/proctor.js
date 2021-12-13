@@ -79,3 +79,29 @@ Proctor.update = (proc, result) => {
         return
     })
 }
+
+
+Proctor.delete = (proc, result) => {
+    console.log(proc.pid)
+    var create_proctor = sql.query(`delete from proctor where pid=${pid};`, (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_created"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Proctor Created")
+            console.log(create_proctor.sql)
+            res.message = "Proctor Created"
+            result(null, res)
+            return
+        }
+        err.type = "not_created"
+        result(err, null)
+        return
+    })
+}
