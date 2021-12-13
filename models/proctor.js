@@ -32,7 +32,7 @@ Proctor.find = (pid, result) =>{
 
 Proctor.create = (proc, result) => {
     console.log(proc.pid)
-    var create_proctor = sql.query(`insert into proctor values('${proc.pid}', '${proc.name}', '${proc.email}', '${proc.department}', '${proc.phoneNumber}', '${proc.qualifications}', '${proc.initials}', '${proc.designation}');`, (err, res) => {
+    var create_proctor = sql.query(`insert into proctor values('${proc.pid}', '${proc.name}', '${proc.email}', '${proc.department}', '${proc.phoneNumber}', '${proc.qualifications}', '${proc.initials}', '${proc.designation}', ${proc.image});`, (err, res) => {
         if (err)
         {
             console.log(err)
@@ -81,7 +81,7 @@ Proctor.update = (proc, result) => {
 }
 
 
-Proctor.delete = (proc, result) => {
+Proctor.remove = (proc, result) => {
     console.log(proc.pid)
     var create_proctor = sql.query(`delete from proctor where pid=${pid};`, (err, res) => {
         if (err)
@@ -105,3 +105,30 @@ Proctor.delete = (proc, result) => {
         return
     })
 }
+
+User.findAll = (result) => {
+    var get_users = sql.query(`select * from proctor;`, (err, res)=>{
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_retrived"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Proctors Retrived")
+            console.log(get_users.sql)
+            res.message = "Proctors Retrived"
+            result(null, res)
+            return
+        }
+        err.type = "not_retrived"
+        result(err, null)
+        return
+    })
+}
+
+
+module.exports = Proctor
