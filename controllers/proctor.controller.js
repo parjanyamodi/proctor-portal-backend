@@ -21,7 +21,8 @@ exports.findProctor = (req, res)=> {
 }
 
 exports.createProctor = (req, res)=> {
-    Proctor.create(req.data, (err, data) => {
+    console.log(req.body)
+    Proctor.create(req.body, (err, data) => {
         if(err)
         {
             if(err.type == "not_created")

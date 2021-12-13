@@ -26,6 +26,7 @@ app.get("/", (req, res)=>{
 })
 
 require('./routes/user.route')(app)
+require('./routes/proctor.route')(app)
 app.get("/home", (req, res)=>{
     res.send({message: "This is home"})
 })

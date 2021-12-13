@@ -32,7 +32,7 @@ Proctor.find = (pid, result) =>{
 
 Proctor.create = (proc, result) => {
     console.log(proc.pid)
-    var create_proctor = sql.query(`insert into proctor values('${proc.pid}', '${proc.name}', '${proc.email}', '${proc.department}', '${proc.phoneNumber}', '${proc.qualifications}', '${proc.initials}', '${proc.designation}', ${proc.image});`, (err, res) => {
+    var create_proctor = sql.query(`insert into proctor values('${proc.pid}', '${proc.name}', '${proc.email}', '${proc.department}', '${proc.phoneNumber}', '${proc.qualifications}', '${proc.initials}', '${proc.designation}', '${proc.image}');`, (err, res) => {
         if (err)
         {
             console.log(err)
@@ -106,8 +106,8 @@ Proctor.remove = (proc, result) => {
     })
 }
 
-User.findAll = (result) => {
-    var get_users = sql.query(`select * from proctor;`, (err, res)=>{
+Proctor.findAll = (result) => {
+    var get_proctors = sql.query(`select * from proctor;`, (err, res)=>{
         if (err)
         {
             console.log(err)
@@ -119,7 +119,7 @@ User.findAll = (result) => {
         if(res.affectedRows !== 0)
         {
             console.log("Proctors Retrived")
-            console.log(get_users.sql)
+            console.log(get_proctors.sql)
             res.message = "Proctors Retrived"
             result(null, res)
             return
