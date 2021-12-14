@@ -25,9 +25,9 @@ alter table Student add foreign key(proctor) references Proctor(pid) on update c
 
 -- Create Proctor Table
 create table Proctor(pid varchar(30), name varchar(100) not null, email varchar(120) not null, 
-					 department varchar(100) not null, phno varchar(15), qualifications varchar(10),
-                     initials varchar(10), designation varchar(100));
-
+					 department varchar(100) not null, phoneNumber varchar(15), qualifications varchar(50),
+                     initials varchar(10), designation varchar(100), image varchar(800));
+drop table proctor;
 -- Add constraints to Proctor Table
 alter table Proctor add primary key (name, email), add foreign key (pid) references Login(gid) on delete cascade;
 
