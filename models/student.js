@@ -89,6 +89,7 @@ Student.findProctor = (sid, result) => {
         else{
             console.log("Student not found!")
             result({type : "not_found"}, null)
+            return
         }
     })
 }
