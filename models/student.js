@@ -4,3 +4,4 @@ const Student = function(std){
     this.proctor = std.proctor
     this.marks = std.marks
 }
+
