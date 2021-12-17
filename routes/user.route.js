@@ -1,13 +1,13 @@
-module.exports = app => {
-    const user = require('../controllers/user.controller')
+module.exports = (app) => {
+  const user = require("../controllers/user.controller");
 
-    app.get('/user/', user.findUser)
+  app.get("/user", user.findUser);
 
-    app.post('/user', user.createUser)
+  app.post("/user", user.createUser);
 
-    app.put('/user', user.updateUser)
+  app.put("/user", user.updateUser);
 
-    app.delete('/user', user.removeUser)
+  app.delete("/user", user.removeUser);
 
-    app.get('/user/all', user.findAllUsers)
-}
+  app.get("/user/all", user.findAllUsers);
+};
