@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
+const cors = require('cors')
 const Port = 4500
 const app = express()
 
@@ -24,6 +24,10 @@ app.get("/", (req, res)=>{
     console.log(arr[req.query.name])
     res.send(arr[req.query.name])
 })
+
+app.use(cors({
+    origin:'*',
+}))
 
 require('./routes/user.route')(app)
 require('./routes/proctor.route')(app)

@@ -27,5 +27,15 @@ Student.findProfile = (sid, result) => {
     })
 }
 
+Student.findMarks = (sid, result) => {
+    var find_marks = sql.query(`select * from marks where sid="${sid}";`, (err, res)=> {
+        if(err)
+        {
+            console.log("There was some error", err)
+            result(err, null)
+            return
+        }
+    })
+}
 
 module.exports = Student
