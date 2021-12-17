@@ -5,3 +5,27 @@ const Student = function(std){
     this.marks = std.marks
 }
 
+Student.findProfile = (sid, result) => {
+    var find_profile = sql.query(`select * from student where sid="${sid}";`, (err, res) => {
+        if(err){
+            console.log("There was an error", err)
+            result(err, null)
+            return
+        }
+        if(res.length){
+            console.log("Student Profile found!", res[0])
+            console.log(find_profile.sql)
+            res[0].message = "Student Found"
+            result(null, res[0])
+            return
+        }
+        else{
+            console.log("Student not found!")
+            result({type : "not_found"}, null)
+        }
+
+    })
+}
+
+
+module.exports = Student
