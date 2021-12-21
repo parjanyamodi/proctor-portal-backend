@@ -173,4 +173,28 @@ Student.findProctor = (sid, result) => {
     })
 }
 
+Student.findAll = (result) => {
+    var get_students = sql.query(`select * from student;`, (err, res)=>{
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_retrived"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Students Retrived")
+            console.log(get_students.sql)
+            res.message = "Students Retrived"
+            result(null, res)
+            return
+        }
+        err.type = "not_retrived"
+        result(err, null)
+        return
+    })
+}
+
 module.exports = Student

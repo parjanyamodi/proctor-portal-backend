@@ -102,6 +102,50 @@ exports.findProctor=(req, res)=> {
     })
 }
 
+exports.findMarks=(req, res)=> {
+    Student.findMarks(req.query['usn'], (err, data)=>{
+        if(err)
+        {
+            if(err.type == "not_retrived")
+            {
+                res.send({
+                    message: "Student's Marks Not Retrived"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
+
+exports.findStudentDetails=(req, res)=> {
+    Student.findDetails(req.query['usn'], (err, data)=>{
+        if(err)
+        {
+            if(err.type == "not_retrived")
+            {
+                res.send({
+                    message: "Student's Details Not Retrived"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
+
+
+
 exports.findAllStudents = (req, res)=> {
     Student.findAll((err, data) => {
         if(err)
@@ -109,7 +153,7 @@ exports.findAllStudents = (req, res)=> {
             if(err.type == "not_retrived")
             {
                 res.send({
-                    message: "Student Not Retrived"
+                    message: "Students Not Retrived"
                 })
             }
             else{
