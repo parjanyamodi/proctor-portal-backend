@@ -82,6 +82,26 @@ exports.removeStudentProfile = (req, res)=> {
     })
 }
 
+exports.findProctor=(req, res)=> {
+    Student.findProctor(req.query['sid'], (err, data)=>{
+        if(err)
+        {
+            if(err.type == "not_retrived")
+            {
+                res.send({
+                    message: "Student's Proctor Not Retrived"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
 exports.findAllStudents = (req, res)=> {
     Student.findAll((err, data) => {
         if(err)
