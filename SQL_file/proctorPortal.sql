@@ -13,23 +13,26 @@ create table Login ( gid varchar(30), role varchar(15) not null,primary key (gid
 select * from Login;
 
 -- Create Student Table
-describe table Student;
+describe Student;
 create table Student(sid varchar(30), usn varchar(20), name varchar(100) not null, email varchar(120) not null,
 					 department varchar(100) not null, gender varchar(20), phno varchar(15), semester varchar(5),
                      cgpa varchar(10), img varchar(1000), proctor varchar(30));
-
+insert into student values("10", "1BM19CS084", "Jeevan", "j.cse@b.ac.in", "CSE", "Male", "805098125", "5", "8.5", "", "1");
 -- Add constraints to Student Table
-alter table Student add primary key(usn), add foreign key(sid) references Login(gid) on delete cascade;
+alter table Student add primary key(sid, usn), add foreign key(sid) references Login(gid) on delete cascade;
 alter table Student add foreign key(proctor) references Proctor(pid) on update cascade;
 
+select * from proctor where pid=(select proctor from student where sid="10");
 
 -- Create Proctor Table
 create table Proctor(pid varchar(30), name varchar(100) not null, email varchar(120) not null, 
 					 department varchar(100) not null, phoneNumber varchar(15), qualifications varchar(50),
                      initials varchar(10), designation varchar(100), image varchar(800));
 drop table proctor;
+insert into proctor values("1", "Selva", "s.cse@b.ac.in", "CSE", "8050978125", "Be, MTech, PhD", "SKS", "Assistant Prof.", "");
 -- Add constraints to Proctor Table
-alter table Proctor add primary key (name, email), add foreign key (pid) references Login(gid) on delete cascade;
+
+alter table Proctor add primary key (pid, name, email), add foreign key (pid) references Login(gid) on delete cascade;
 
 
 -- Create Courses table

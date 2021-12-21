@@ -27,6 +27,59 @@ Student.findProfile = (sid, result) => {
     })
 }
 
+Student.createProfile = (req, result)=> {
+    console.log(req)
+    var update_profile = sql.query(`insert into student values("${req.sid}", usn varchar(20), "${req.name}", "${req.email}",
+    "${req.department}","${req.gender}", "${req.phno}", "${req.semester}", "${req.cgpa}", "${req.img}", "${req.proctor}");`, (err, res)=> {
+        if(err)
+        {
+            console.log(err)
+            err.type = "not_updated"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Student Profile Updated")
+            console.log(update_profile.sql)
+            res.message = "Student Profile Updated"
+            result(null, res)
+            return
+        }
+        err.type = "not_updated"
+        result(err, null)
+        return
+    })
+}
+
+Proctor.remove = (std, result) => {
+    console.log(std.pid)
+    var create_proctor = sql.query(`delete from proctor where sid=${std.sid};`, (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_removed"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Profile Removed")
+            console.log(create_proctor.sql)
+            res.message = "Profile Removed"
+            result(null, res)
+            return
+        }
+        err.type = "not_removed"
+        result(err, null)
+        return
+    })
+}
+
+
+
 Student.findMarks = (sid, result) => {
     var find_marks = sql.query(`select * from marks where sid="${sid}";`, (err, res)=> {
         if(err)

@@ -57,7 +57,7 @@ Proctor.create = (proc, result) => {
 
 Proctor.update = (proc, result) => {
     console.log(proc.pid)
-    var create_proctor = sql.query(`update proctor set name='${proc.name}', email='${proc.email}', department='${proc.department}', phoneNumber='${proc.phoneNumber}', qualifications='${proc.qualifications}', initials='${proc.initials}', designation='${proc.designation}' where pid=${proc.pid};`, (err, res) => {
+    var update_proctor = sql.query(`update proctor set name='${proc.name}', email='${proc.email}', department='${proc.department}', phoneNumber='${proc.phoneNumber}', qualifications='${proc.qualifications}', initials='${proc.initials}', designation='${proc.designation}' where pid=${proc.pid};`, (err, res) => {
         if (err)
         {
             console.log(err)
@@ -69,7 +69,7 @@ Proctor.update = (proc, result) => {
         if(res.affectedRows !== 0)
         {
             console.log("Proctor Updated")
-            console.log(create_proctor.sql)
+            console.log(update_proctor.sql)
             res.message = "Proctor Updated"
             result(null, res)
             return
@@ -87,20 +87,20 @@ Proctor.remove = (proc, result) => {
         if (err)
         {
             console.log(err)
-            err.type = "not_created"
+            err.type = "not_removed"
             result(err, null)
             return
         }
         // console.log(res.affectedRows)
         if(res.affectedRows !== 0)
         {
-            console.log("Proctor Created")
+            console.log("Proctor Removed")
             console.log(create_proctor.sql)
-            res.message = "Proctor Created"
+            res.message = "Proctor Removed"
             result(null, res)
             return
         }
-        err.type = "not_created"
+        err.type = "not_removed"
         result(err, null)
         return
     })
