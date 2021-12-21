@@ -64,7 +64,6 @@ Student.updateProfile = (student, result)=> {
             result(err, null)
             return
         }
-        // console.log(res.affectedRows)
         if(res.affectedRows !== 0)
         {
             console.log("Student Updated")
@@ -182,7 +181,6 @@ Student.findAll = (result) => {
             result(err, null)
             return
         }
-        // console.log(res.affectedRows)
         if(res.affectedRows !== 0)
         {
             console.log("Students Retrived")

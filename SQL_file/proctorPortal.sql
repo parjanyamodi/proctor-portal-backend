@@ -21,7 +21,7 @@ insert into student values("10", "1BM19CS084", "Jeevan", "j.cse@b.ac.in", "CSE",
 -- Add constraints to Student Table
 alter table Student add primary key(sid, usn), add foreign key(sid) references Login(gid) on delete cascade;
 alter table Student add foreign key(proctor) references Proctor(pid) on update cascade;
-
+ALTER TABLE Student ADD INDEX (usn);
 select * from proctor where pid=(select proctor from student where sid="10");
 
 -- Create Proctor Table
@@ -53,6 +53,7 @@ create table requests(usn varchar(20), pid varchar(30), request_type varchar(10)
 
 -- Create table branch_change
 create table branch_change(initial_branch varchar(100), current_branch varchar(100));
+
 
 -- Values for Login table
 insert into login values("121212", "Student");
