@@ -29,7 +29,7 @@ Student.findProfile = (sid, result) => {
 
 Student.createProfile = (req, result)=> {
     console.log(req)
-    var update_profile = sql.query(`insert into student values("${req.sid}", usn varchar(20), "${req.name}", "${req.email}",
+    var update_profile = sql.query(`insert into student values("${req.sid}", ${req.usn}", "${req.name}", "${req.email}",
     "${req.department}","${req.gender}", "${req.phno}", "${req.semester}", "${req.cgpa}", "${req.img}", "${req.proctor}");`, (err, res)=> {
         if(err)
         {
@@ -53,9 +53,35 @@ Student.createProfile = (req, result)=> {
     })
 }
 
-Proctor.remove = (std, result) => {
+Student.updateProfile = (student, result)=> {
+    var update_student = sql.query(`update student set usn="${student.usn}", name="${student.name}", email="${student.email}",
+    department="${student.department}", gender="${student.gender}", phno="${student.phno}", semester="${student.semester}",
+    cgpa "${student.cgpa}", img "${student.img}", proctor="${student.pid}" where sid="${student.sid}";`, (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_updated"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Student Updated")
+            console.log(update_student.sql)
+            res.message = "Student Updated"
+            result(null, res)
+            return
+        }
+        err.type = "not_updated"
+        result(err, null)
+        return
+    })
+}
+
+Student.remove = (std, result) => {
     console.log(std.pid)
-    var create_proctor = sql.query(`delete from proctor where sid=${std.sid};`, (err, res) => {
+    var delete_student = sql.query(`delete from student where sid=${std.sid};`, (err, res) => {
         if (err)
         {
             console.log(err)
@@ -67,7 +93,7 @@ Proctor.remove = (std, result) => {
         if(res.affectedRows !== 0)
         {
             console.log("Profile Removed")
-            console.log(create_proctor.sql)
+            console.log(delete_student.sql)
             res.message = "Profile Removed"
             result(null, res)
             return
