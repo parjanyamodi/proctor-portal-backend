@@ -29,7 +29,7 @@ Student.findProfile = (sid, result) => {
 
 Student.createProfile = (req, result)=> {
     console.log(req)
-    var update_profile = sql.query(`insert into student values("${req.sid}", ${req.usn}", "${req.name}", "${req.email}",
+    var create_profile = sql.query(`insert into student values("${req.sid}", ${req.usn}", "${req.name}", "${req.email}",
     "${req.department}","${req.gender}", "${req.phno}", "${req.semester}", "${req.cgpa}", "${req.img}", "${req.proctor}");`, (err, res)=> {
         if(err)
         {
@@ -41,13 +41,13 @@ Student.createProfile = (req, result)=> {
         // console.log(res.affectedRows)
         if(res.affectedRows !== 0)
         {
-            console.log("Student Profile Updated")
-            console.log(update_profile.sql)
-            res.message = "Student Profile Updated"
+            console.log("Student Profile Created")
+            console.log(create_profile.sql)
+            res.message = "Student Profile Created"
             result(null, res)
             return
         }
-        err.type = "not_updated"
+        err.type = "not_created"
         result(err, null)
         return
     })
