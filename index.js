@@ -31,6 +31,7 @@ app.use(cors({
 
 require('./routes/user.route')(app)
 require('./routes/proctor.route')(app)
+require('./routes/student.route')(app)
 app.get("/home", (req, res)=>{
     res.send({message: "This is home"})
 })

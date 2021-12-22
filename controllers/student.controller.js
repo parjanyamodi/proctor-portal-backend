@@ -1,6 +1,7 @@
 const Student = require('../models/user')
 
-exports.findStudentProfile = (req, res)=> {
+exports.findStudent = (req, res)=> {
+    console.log(req.query['sid'])
     Student.findProfile(req.query['sid'], (err, data)=> {
         if (err)
         {
@@ -20,7 +21,7 @@ exports.findStudentProfile = (req, res)=> {
     })
 }
 
-exports.createStudentProfile = (req, res)=> {
+exports.createStudent = (req, res)=> {
     console.log(req.body)
     Student.createProfile(req.body, (err, data) => {
         if(err)
@@ -41,7 +42,7 @@ exports.createStudentProfile = (req, res)=> {
     })
 }
 
-exports.updateStudentProfile = (req, res)=> {
+exports.updateStudent = (req, res)=> {
     console.log(req.body)
     Student.updateProfile(req.body, (err, data) => {
         if(err)
@@ -62,7 +63,7 @@ exports.updateStudentProfile = (req, res)=> {
     })
 }
 
-exports.removeStudentProfile = (req, res)=> {
+exports.removeStudent = (req, res)=> {
     Student.removeProfile(req.query['sid'], (err, data) => {
         if(err)
         {
