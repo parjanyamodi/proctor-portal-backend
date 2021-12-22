@@ -1,4 +1,4 @@
-const Student = require('../models/user')
+const Student = require('../models/student')
 
 exports.findStudent = (req, res)=> {
     console.log(req.query['sid'])
