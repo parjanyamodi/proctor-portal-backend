@@ -1,11 +1,13 @@
 const sql = require('../db/db')
-const Student = function(std){
-    this.profile = std.profile
-    this.proctor = std.proctor
-    this.marks = std.marks
+const Student = function(student)
+{
+    this.profile = student.profile
+    this.proctor = student.proctor
+    this.marks = student.marks
 }
 
-Student.findProfile = (sid, result) => {
+Student.findProfile = function(sid, result){
+    console.log(sid)
     var find_profile = sql.query(`select * from student where sid="${sid}";`, (err, res) => {
         if(err){
             console.log("There was an error", err)
