@@ -31,7 +31,7 @@ Student.findProfile = function(sid, result){
 
 Student.createProfile = (req, result)=> {
     console.log(req)
-    var create_profile = sql.query(`insert into student values("${req.sid}", ${req.usn}", "${req.name}", "${req.email}","${req.department}","${req.gender}", "${req.phno}", "${req.semester}", "${req.cgpa}", "${req.img}", "${req.proctor}");`, (err, res)=> {
+    var create_profile = sql.query(`insert into student values("${req.sid}", "${req.usn}", "${req.name}", "${req.email}","${req.department}","${req.gender}", "${req.phno}", "${req.semester}", "${req.cgpa}", "${req.img}", "${req.proctor}");`, (err, res)=> {
         if(err)
         {
             console.log(err)
