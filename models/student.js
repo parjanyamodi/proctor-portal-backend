@@ -54,6 +54,34 @@ Student.createProfile = (req, result)=> {
     })
 }
 
+
+Student.createMarks = (req, result)=> {
+    console.log(req)
+    var create_profile = sql.query(`insert into marks values("${req.usn}", "${req.cid}", "${req.internal}", "${req.see}", "${req.faculty}", "${req.course_reg_type}", "${req.semester}", "${req.grade}", "${req.attandance}", "${req.year}");`, (err, res)=> {
+        if(err)
+        {
+            console.log(err)
+            err.type = "not_inserted"
+            result(err, null)
+            return
+        }
+        if(res.affectedRows !== 0)
+        {
+            console.log("Student Marks inserted")
+            console.log(create_profile.sql)
+            res.message = "Student Marks inserted"
+            result(null, res)
+            return
+        }
+        err.type = "not_inserted"
+        result(err, null)
+        return
+    })
+}
+
+
+
+
 Student.updateProfile = (student, result)=> {
     var update_student = sql.query(`update student set usn="${student.usn}", name="${student.name}", email="${student.email}",
     department="${student.department}", gender="${student.gender}", phno="${student.phno}", semester="${student.semester}",

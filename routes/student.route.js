@@ -10,7 +10,9 @@ module.exports = (app) => {
     app.get("/student/proctor", student.findProctor);
   
     app.post("/student", student.createStudent);
-  
+    
+    app.post("/student/marks", student.createStudentMarks);
+    
     app.put("/student", student.updateStudent);
   
     app.delete("/student", student.removeStudent);

@@ -42,6 +42,30 @@ exports.createStudent = (req, res)=> {
     })
 }
 
+exports.createStudentMarks = (req, res)=> {
+    console.log(req.body)
+    Student.createMarks(req.body, (err, data) => {
+        if(err)
+        {
+            if(err.type == "not_created")
+            {
+                res.send({
+                    message: "Student Marks Not Created"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
+
+
+
 exports.updateStudent = (req, res)=> {
     console.log(req.body)
     Student.updateProfile(req.body, (err, data) => {
