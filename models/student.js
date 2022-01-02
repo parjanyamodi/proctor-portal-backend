@@ -57,7 +57,7 @@ Student.createProfile = (req, result)=> {
 
 Student.createMarks = (req, result)=> {
     console.log(req)
-    var create_profile = sql.query(`insert into marks values("${req.usn}", "${req.cid}", "${req.internal}", "${req.see}", "${req.faculty}", "${req.course_reg_type}", "${req.semester}", "${req.grade}", "${req.attandance}", "${req.year}");`, (err, res)=> {
+    var create_profile = sql.query(`insert into reg_marks values("${req.usn}", "${req.cid}", "${req.internal}", "${req.see}", "${req.faculty}", "${req.course_reg_type}", "${req.semester}", "${req.grade}", "${req.attandance}", "${req.year}");`, (err, res)=> {
         if(err)
         {
             console.log(err)
