@@ -106,8 +106,8 @@ Student.remove = (std, result) => {
 
 
 
-Student.findMarks = (sid, result) => {
-    var find_marks = sql.query(`select * from marks where sid="${sid}";`, (err, res)=> {
+Student.findMarks = (usn, result) => {
+    var find_marks = sql.query(`select * from reg_marks where usn="${usn}";`, (err, res)=> {
         if(err)
         {
             console.log("There was some error", err)
@@ -115,10 +115,10 @@ Student.findMarks = (sid, result) => {
             return
         }
         if(res.length){
-            console.log("Student Marks found!", res[0])
+            console.log("Student Marks found!", res)
             console.log(find_marks.sql)
             res[0].message = "Student Marks Found"
-            result(null, res[0])
+            result(null, res)
             return
         }
         else{

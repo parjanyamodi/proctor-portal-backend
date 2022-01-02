@@ -60,25 +60,32 @@ create table details(usn varchar(20), data varchar(100000));
 insert into login values("121212", "Student");
 
 -- Values for courses
-insert into Courses values("121212", 4, 'PC', 'Check Check', '1', 'CSE');
-insert into courses values("19MA3BSSDM", "Statistics and Discrete Mathematics", 4, 3, "CSE");
-insert into courses values("19CS3ESMMC", "Microprocessors and Microcontrollers", 4, 3, "CSE");
-insert into courses values("19CS3PCOOJ", "Object Oriented Java Programming", 4, 3, "CSE");
-insert into courses values("19CS3PCDST", "Data Structures", 4, 3, "CSE");
-insert into courses values("19CS3PCCOA", "Computer Organization and Architecture", 3, 3, "CSE");
-insert into courses values("19CS3PCLOD", "Logic Design", 3, 3, "CSE");
-insert into courses values("19HS4PCEVS", "Environmental Studies", 2, 3, "CSE");
-insert into courses values("19CS3PWPW1", "Project Work-1", 2, 3, "CSE");
-insert into courses values("19CS3NCNC3", "Physical Activity (Sports/ Yoga Etc.)", 0, 3, "CSE");
-insert into courses values("18MA1BSEM1", "Engineering Mathematics-1", 4, 1, "CSE");
-insert into courses values("18CY1BSCHY", "Engineering Chemistry", 5, 1, "CSE");
-insert into courses values("18EE1ESELE", "Elememts of Electrical Engineering", 3, 1, "CSE");
-insert into courses values("18ME1ESEED", "Elememts of Engineering Drawing", 4, 1, "CSE");
-insert into courses values("18CV1ESENM", "Engineering Mechanics", 4, 1, "CSE");
-insert into courses values("18HS1NCENG", "Functional English", 0, 1, "CSE");
-insert into courses values("18MA2BSEM2", "Engineering Mathematics-2", 4, 2, "CSE");
-insert into courses values("18PY2BSPHY", "Applied Physics", 5, 2, "CSE");
-insert into courses values("18EC2ESECE", "Elememts of Electronics Engineering", 3, 2, "CSE");
-insert into courses values("18ME2ESEME", "Elememts of Mechanical Engineering", 4, 2, "CSE");
-insert into courses values("18CS2ESCCP", "C Programming", 4, 2, "CSE");
-insert into courses values("18HS2NCKAN", "Functional Kannada", 0, 2, "CSE");
+insert into Courses values("121212", "4", 'PC', 'Check Check', '1', 'CSE');
+insert into courses values("19MA3BSSDM", "3", 'PC', "Statistics and Discrete Mathematics", "3", "CSE");
+insert into courses values("19CS3ESMMC", "3", 'PC',"Microprocessors and Microcontrollers", 3, "CSE");
+insert into courses values("19CS3PCOOJ", "3", 'PC',"Object Oriented Java Programming", 3, "CSE");
+insert into courses values("19CS3PCDST", "3", 'PC',"Data Structures", 3, "CSE");
+insert into courses values("19CS3PCCOA", "3", 'PC',"Computer Organization and Architecture", 3, "CSE");
+insert into courses values("19CS3PCLOD", "3", 'PC',"Logic Design", 3, "CSE");
+insert into courses values("19HS4PCEVS", "3", 'PC',"Environmental Studies", 3, "CSE");
+insert into courses values("19CS3PWPW1", "3", 'PC',"Project Work-1", 3, "CSE");
+insert into courses values("19CS3NCNC3", "3", 'PC',"Physical Activity (Sports/ Yoga Etc.)", 3, "CSE");
+insert into courses values("18MA1BSEM1", "3", 'PC',"Engineering Mathematics-1", 1, "CSE");
+insert into courses values("18CY1BSCHY", "3", 'PC',"Engineering Chemistry", 1, "CSE");
+insert into courses values("18EE1ESELE", "3", 'PC',"Elememts of Electrical Engineering", 1, "CSE");
+insert into courses values("18ME1ESEED", "3", 'PC',"Elememts of Engineering Drawing", 1, "CSE");
+insert into courses values("18CV1ESENM", "3", 'PC',"Engineering Mechanics", 1, "CSE");
+insert into courses values("18HS1NCENG", "3", 'PC',"Functional English", 1, "CSE");
+insert into courses values("18MA2BSEM2", "3", 'PC',"Engineering Mathematics-2", 2, "CSE");
+insert into courses values("18PY2BSPHY", "3", 'PC',"Applied Physics", 2, "CSE");
+insert into courses values("18EC2ESECE", "3", 'PC',"Elememts of Electronics Engineering", 2, "CSE");
+insert into courses values("18ME2ESEME", "3", 'PC',"Elememts of Mechanical Engineering", 2, "CSE");
+insert into courses values("18CS2ESCCP", "3", 'PC',"C Programming", 2, "CSE");
+insert into courses values("18HS2NCKAN", "3", 'PC',"Functional Kannada", 2, "CSE");
+
+
+-- Values for marks table
+insert into reg_marks values("1BM19CS084", "121212", "40", "80", "AAG", "REG", "3", "S", "55", "2020");
+insert into reg_marks values("1BM19CS084", "19MA3BSSDM", "40", "80", "AAG", "REG", "3", "S", "55", "2020");
+
+select * from reg_marks where usn="1BM19CS084";
