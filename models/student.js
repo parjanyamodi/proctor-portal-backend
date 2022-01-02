@@ -158,6 +158,32 @@ Student.remove = (std, result) => {
     })
 }
 
+Student.removeMarks = (params, result) => {
+    console.log(params)
+    params=params.query
+    var delete_student = sql.query(`delete from reg_marks where usn="${params.usn}" and cid="${params.cid}" and type="${params.course_reg_type}" and year="${params.year}";`, (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_removed"
+            result(err, null)
+            return
+        }
+        // console.log(res.affectedRows)
+        if(res.affectedRows !== 0)
+        {
+            console.log("Marks Removed")
+            console.log(delete_student.sql)
+            res.message = "Marks Removed"
+            result(null, res)
+            return
+        }
+        err.type = "not_removed"
+        result(err, null)
+        return
+    })
+}
+
 
 
 Student.findMarks = (usn, result) => {

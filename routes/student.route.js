@@ -16,10 +16,11 @@ module.exports = (app) => {
     app.put("/student", student.updateStudent);
 
     app.put("/student/marks", student.updateStudentMarks);
-
   
     app.delete("/student", student.removeStudent);
-  
+    
+    app.delete("/student/marks", student.removeStudentMarks);
+    
     app.get("/student/all", student.findAllStudents);
   };
   

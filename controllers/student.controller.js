@@ -130,6 +130,26 @@ exports.removeStudent = (req, res)=> {
     })
 }
 
+exports.removeStudentMarks = (req, res)=> {
+    Student.removeMarks(req, (err, data) => {
+        if(err)
+        {
+            if(err.type == "not_removed")
+            {
+                res.send({
+                    message: "Student Marks Not Removed"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
 
 exports.findMarks=(req, res)=> {
     Student.findMarks(req.query['usn'], (err, data)=>{
