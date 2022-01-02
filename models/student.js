@@ -107,8 +107,9 @@ Student.updateProfile = (student, result)=> {
     })
 }
 
-Student.updateMarks = (student, result)=> {
-    var update_student = sql.query(`update reg_marks set internal="${req.internal}",see= "${req.see}",course_faculty= "${req.course_faulty}",type= "${req.course_type}",semester= "${req.semster}",grade= "${req.grade}",attandance= "${req.attandance}",year= "${req.year}" where usn="${req.usn}" and cid="${req.cid}"`, (err, res) => {
+Student.updateMarks = (req, result)=> {
+    console.log(req)
+    var update_student = sql.query(`update reg_marks set internal="${req.internal}",see= "${req.see}",course_faculty= "${req.faculty}",type= "${req.course_reg_type}",semester= "${req.semester}",grade= "${req.grade}",attendance= "${req.attendance}",year= "${req.year}" where usn="${req.usn}" and cid="${req.cid}"`, (err, res) => {
         if (err)
         {
             console.log(err)
