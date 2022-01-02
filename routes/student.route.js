@@ -14,6 +14,9 @@ module.exports = (app) => {
     app.post("/student/marks", student.createStudentMarks);
     
     app.put("/student", student.updateStudent);
+
+    app.put("/student/marks", student.updateStudentMarks);
+
   
     app.delete("/student", student.removeStudent);
   

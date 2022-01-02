@@ -107,6 +107,31 @@ Student.updateProfile = (student, result)=> {
     })
 }
 
+Student.updateMarks = (student, result)=> {
+    var update_student = sql.query(`update reg_marks set internal="${req.internal}",see= "${req.see}",course_faculty= "${req.course_faulty}",type= "${req.course_type}",semester= "${req.semster}",grade= "${req.grade}",attandance= "${req.attandance}",year= "${req.year}" where usn="${req.usn}" and cid="${req.cid}"`, (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_updated"
+            result(err, null)
+            return
+        }
+        if(res.affectedRows !== 0)
+        {
+            console.log("Student Updated")
+            console.log(update_student.sql)
+            res.message = "Student Updated"
+            result(null, res)
+            return
+        }
+        err.type = "not_updated"
+        result(err, null)
+        return
+    })
+}
+
+
+
 Student.remove = (std, result) => {
     console.log(std.pid)
     var delete_student = sql.query(`delete from student where sid=${std.sid};`, (err, res) => {

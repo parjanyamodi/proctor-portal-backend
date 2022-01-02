@@ -74,7 +74,7 @@ exports.updateStudent = (req, res)=> {
             if(err.type == "not_updated")
             {
                 res.send({
-                    message: "Student Profile Not Created"
+                    message: "Student Profile Not Updated"
                 })
             }
             else{
@@ -86,6 +86,29 @@ exports.updateStudent = (req, res)=> {
         else res.send(data)
     })
 }
+
+
+exports.updateStudentMarks = (req, res)=> {
+    console.log(req.body)
+    Student.updateMarks(req.body, (err, data) => {
+        if(err)
+        {
+            if(err.type == "not_updated")
+            {
+                res.send({
+                    message: "Student Marks Not Updated"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
 
 exports.removeStudent = (req, res)=> {
     Student.removeProfile(req.query['sid'], (err, data) => {
