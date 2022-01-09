@@ -44,7 +44,7 @@ grade varchar(5), attendance varchar(5), year varchar(5),
 foreign key(cid) references Courses(cid) on update cascade, foreign key(usn) references Student(usn) on delete cascade,
 primary key(usn, cid, type, year));
 
-
+select r.cid, r.course_faculty, r.attendance, r.internal, r.see, r.grade, r.year, c.credits, c.title, r.semester from reg_marks r join courses c on r.cid = c.cid where usn="1BM19CS084";
 -- Create requests table
 create table requests(usn varchar(20), pid varchar(30), request_type varchar(10), request_data varchar(10000));
 
@@ -83,11 +83,12 @@ insert into courses values("18EC2ESECE", "3", 'PC',"Elememts of Electronics Engi
 insert into courses values("18ME2ESEME", "3", 'PC',"Elememts of Mechanical Engineering", 2, "CSE");
 insert into courses values("18CS2ESCCP", "3", 'PC',"C Programming", 2, "CSE");
 insert into courses values("18HS2NCKAN", "3", 'PC',"Functional Kannada", 2, "CSE");
+insert into courses values("18HS2NCKAA", "3", 'PC',"Functional Kannada Test", 5, "CSE");
 
 
 -- Values for marks table
 insert into reg_marks values("1BM19CS084", "121212", "40", "80", "AAG", "REG", "3", "S", "55", "2020");
-insert into reg_marks values("1BM19CS084", "19MA3BSSDM", "40", "80", "AAG", "REG", "3", "S", "55", "2020");
+insert into reg_marks values("1BM19CS084", "18HS2NCKAA", "45", "90", "AAG", "REG", "3", "S", "55", "2020");
 
 select * from reg_marks where usn="1BM19CS084";
 

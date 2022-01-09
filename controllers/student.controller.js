@@ -109,6 +109,27 @@ exports.updateStudentMarks = (req, res)=> {
     })
 }
 
+exports.updateStudentDetails = (req, res)=> {
+    console.log(req.body)
+    Student.updateDetails(req.body, (err, data) => {
+        if(err)
+        {
+            if(err.type == "not_updated")
+            {
+                res.send({
+                    message: "Student Details Not Updated"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
 
 exports.removeStudent = (req, res)=> {
     Student.removeProfile(req.query['sid'], (err, data) => {

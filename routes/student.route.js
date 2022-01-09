@@ -16,6 +16,8 @@ module.exports = (app) => {
     app.put("/student", student.updateStudent);
 
     app.put("/student/marks", student.updateStudentMarks);
+
+    app.put("/student/details", student.updateStudentDetails);
   
     app.delete("/student", student.removeStudent);
     

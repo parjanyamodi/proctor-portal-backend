@@ -212,7 +212,7 @@ Student.removeMarks = (params, result) => {
 
 
 Student.findMarks = (usn, result) => {
-    var find_marks = sql.query(`select * from reg_marks where usn="${usn}";`, (err, res)=> {
+    var find_marks = sql.query(`select r.cid, r.course_faculty, r.attendance, r.internal, r.see, r.grade, r.year, c.credits, c.title, r.semester from reg_marks r join courses c on r.cid = c.cid where usn="${usn}";`, (err, res)=> {
         if(err)
         {
             console.log("There was some error", err)
@@ -233,8 +233,9 @@ Student.findMarks = (usn, result) => {
     })
 }
 
-Student.findDetails = (sid, result) => {
-    var find_details = sql.query(`select * from details where sid="${sid}";`, (err, res)=> {
+Student.findDetails = (usn, result) => {
+    console.log(usn)
+    var find_details = sql.query(`select * from details where usn="${usn}";`, (err, res)=> {
         if(err)
         {
             console.log("There was some error", err)
@@ -277,6 +278,30 @@ Student.findProctor = (sid, result) => {
         }
     })
 }
+
+Student.updateDetails = (req)=> {
+    var update_studentDetails = sql.query(`update details set data=${String(req)};`,  (err, res) => {
+        if (err)
+        {
+            console.log(err)
+            err.type = "not_updated"
+            result(err, null)
+            return
+        }
+        if(res.affectedRows !== 0)
+        {
+            console.log("Student Details Updated")
+            console.log(update_studentDetails.sql)
+            res.message = "Student Details Updated"
+            result(null, res)
+            return
+        }
+        err.type = "not_updated"
+        result(err, null)
+        return
+    })
+}
+
 
 Student.findAll = (result) => {
     var get_students = sql.query(`select * from student;`, (err, res)=>{
