@@ -129,7 +129,7 @@ create table reg_marks(usn varchar(20), cid varchar(20), internal varchar(5), se
 grade varchar(5), attendance varchar(5), year varchar(5),
 foreign key(cid) references Courses(cid) on update cascade, foreign key(usn) references Student(usn) on delete cascade,
 primary key(usn, cid, type, year));
-create table details(usn varchar(20), data varchar(100000));
+create table details(usn varchar(20), data TEXT);
 insert into login values("121212", "Student");
 insert into Courses values("121212", "4", 'PC', 'Check Check', '1', 'CSE');
 insert into courses values("19MA3BSSDM", "3", 'PC', "Statistics and Discrete Mathematics", "3", "CSE");
