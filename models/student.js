@@ -279,8 +279,10 @@ Student.findProctor = (sid, result) => {
     })
 }
 
-Student.updateDetails = (req)=> {
-    var update_studentDetails = sql.query(`update details set data=${String(req)};`,  (err, res) => {
+Student.updateDetails = (req, usn, result)=> {
+    console.log(JSON.stringify(req), usn)
+    console.log(`update details set data= '${JSON.stringify(req)}' where usn="${usn}";`)
+    var update_studentDetails = sql.query(`update details set data= '${JSON.stringify(req)}' where usn="${usn}";`,  (err, res) => {
         if (err)
         {
             console.log(err)

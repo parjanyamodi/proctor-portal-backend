@@ -110,8 +110,8 @@ exports.updateStudentMarks = (req, res)=> {
 }
 
 exports.updateStudentDetails = (req, res)=> {
-    console.log(req.body)
-    Student.updateDetails(req.body, (err, data) => {
+    console.log(req.body,"Check", req.query["usn"])
+    Student.updateDetails(req.body, req.query["usn"], (err, data) => {
         if(err)
         {
             if(err.type == "not_updated")
