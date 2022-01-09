@@ -22,5 +22,7 @@ module.exports = (app) => {
     app.delete("/student/marks", student.removeStudentMarks);
     
     app.get("/student/all", student.findAllStudents);
+
+    app.get('/student/branch_change', student.findStudentBranchChange)
   };
   

@@ -29,6 +29,31 @@ Student.findProfile = function(sid, result){
     })
 }
 
+Student.getBranchChange = function(sid, result){
+    console.log(sid)
+    var find_branchChange = sql.query(`select * from branch_change where sid="${sid}";`, (err, res) => {
+        if(err){
+            console.log("There was an error", err)
+            result(err, null)
+            return
+        }
+        if(res.length){
+            console.log("Student Branch Change Details found!", res[0])
+            console.log(find_branchChange.sql)
+            res[0].message = "Student Found"
+            result(null, res[0])
+            return
+        }
+        else{
+            console.log("Student branch change details not found!")
+            result({type : "not_found"}, null)
+            return
+        }
+
+    })
+}
+
+
 Student.createProfile = (req, result)=> {
     console.log(req)
     var create_profile = sql.query(`insert into student values("${req.sid}", "${req.usn}", "${req.name}", "${req.email}","${req.department}","${req.gender}", "${req.phno}", "${req.semester}", "${req.cgpa}", "${req.img}", "${req.proctor}");`, (err, res)=> {

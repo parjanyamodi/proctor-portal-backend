@@ -213,6 +213,26 @@ exports.findProctor=(req, res)=> {
     })
 }
 
+exports.findStudentBranchChange = (req, res) => {
+    Student.getBranchChange(req.query['sid'], (err, data)=>{
+        if(err)
+        {
+            if(err.type == "not_found")
+            {
+                res.send({
+                    message: "Student's Branch Change Details Not Retrived or Do not exist"
+                })
+            }
+            else{
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
 
 exports.findAllStudents = (req, res)=> {
     Student.findAll((err, data) => {
