@@ -1,7 +1,7 @@
 const Student = require('../models/student')
 
 exports.findStudent = (req, res)=> {
-    console.log(req.query['sid'])
+    // console.log(req.query['sid'])
     Student.findProfile(req.query['sid'], (err, data)=> {
         if (err)
         {
@@ -194,6 +194,7 @@ exports.findMarks=(req, res)=> {
 
 
 exports.findStudentDetails=(req, res)=> {
+    console.log("Finding student details")
     Student.findDetails(req.query['usn'], (err, data)=>{
         if(err)
         {

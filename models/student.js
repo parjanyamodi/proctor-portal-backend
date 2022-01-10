@@ -7,7 +7,7 @@ const Student = function(student)
 }
 
 Student.findProfile = function(sid, result){
-    console.log(sid)
+    // console.log("check")
     var find_profile = sql.query(`select * from student where sid="${sid}";`, (err, res) => {
         if(err){
             console.log("There was an error", err)
@@ -234,7 +234,7 @@ Student.findMarks = (usn, result) => {
 }
 
 Student.findDetails = (usn, result) => {
-    console.log(usn)
+    console.log(usn, "check")
     var find_details = sql.query(`select * from details where usn="${usn}";`, (err, res)=> {
         if(err)
         {
@@ -272,7 +272,8 @@ Student.findProctor = (sid, result) => {
             return
         }
         else{
-            console.log("Student not found!")
+            console.log(find_proctor.sql)
+            console.log("Student Proctor not found!")
             result({type : "not_found"}, null)
             return
         }
