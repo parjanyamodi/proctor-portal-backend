@@ -3,6 +3,8 @@ module.exports = app => {
 
     app.get('/proctor', proctor.findProctor)
 
+    app.get('/proctor/students', proctor.findProctorStudents)
+    
     app.post('/proctor', proctor.createProctor)
 
     app.put('/proctor', proctor.updateProctor)

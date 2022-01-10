@@ -30,6 +30,26 @@ Proctor.find = (pid, result) =>{
     })
 }
 
+Proctor.findStudents = (pid, result)=> {
+    var find_students = sql.query(`select * from student where proctor=${pid};`, (err, res)=> {
+        if(err)
+        {
+            console.log(err)
+            err.type = "not_found"
+            result(err, null)
+            return
+        }
+        if(res.affectedRows !== 0)
+        {
+            console.log("Student Fetched")
+            console.log(find_students.sql)
+            result(null, res)
+            return
+        }
+        result(null, {message: "nothing here"})
+    })
+}
+
 Proctor.create = (proc, result) => {
     console.log(proc.pid)
     var create_proctor = sql.query(`insert into proctor values('${proc.pid}', '${proc.name}', '${proc.email}', '${proc.department}', '${proc.phoneNumber}', '${proc.qualifications}', '${proc.initials}', '${proc.designation}', '${proc.image}');`, (err, res) => {
@@ -83,7 +103,7 @@ Proctor.update = (proc, result) => {
 
 Proctor.remove = (proc, result) => {
     console.log(proc.pid)
-    var create_proctor = sql.query(`delete from proctor where pid=${pid};`, (err, res) => {
+    var create_proctor = sql.query(`delete from proctor where pid="${pid}";`, (err, res) => {
         if (err)
         {
             console.log(err)
@@ -91,7 +111,6 @@ Proctor.remove = (proc, result) => {
             result(err, null)
             return
         }
-        // console.log(res.affectedRows)
         if(res.affectedRows !== 0)
         {
             console.log("Proctor Removed")

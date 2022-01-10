@@ -20,6 +20,28 @@ exports.findProctor = (req, res)=> {
     })
 }
 
+exports.findProctorStudents = (req, res)=> {
+    Proctor.findStudents(req.query['pid'], (err, data) => {
+        if(err)
+        {
+            if (err.type == "not_found")
+            {
+                res.send({
+                    message: "students not found"
+                })
+            }
+            else
+            {
+                res.send({
+                    message: err
+                })
+            }
+        }
+        else res.send(data)
+    })
+}
+
+
 exports.createProctor = (req, res)=> {
     console.log(req.body)
     Proctor.create(req.body, (err, data) => {
