@@ -26,12 +26,13 @@ app.get("/", (req, res)=>{
 })
 
 app.use(cors({
-    origin:'*',
+    origin:'http://localhost:3000',
 }))
 
 require('./routes/user.route')(app)
 require('./routes/proctor.route')(app)
 require('./routes/student.route')(app)
+
 app.get("/home", (req, res)=>{
     res.send({message: "This is home"})
 })

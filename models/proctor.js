@@ -76,8 +76,8 @@ Proctor.create = (proc, result) => {
 }
 
 Proctor.update = (proc, result) => {
-    console.log(proc.pid)
-    var update_proctor = sql.query(`update proctor set name='${proc.name}', email='${proc.email}', department='${proc.department}', phoneNumber='${proc.phoneNumber}', qualifications='${proc.qualifications}', initials='${proc.initials}', designation='${proc.designation}' where pid=${proc.pid};`, (err, res) => {
+    console.log(proc)
+    var update_proctor = sql.query(`update proctor set name='${proc.name}', email='${proc.email}', department='${proc.department}', phoneNumber='${proc.phoneNumber}', qualifications='${proc.qualifications}', initials='${proc.initials}', designation='${proc.designation}', image='${proc.img}' where pid=${proc.pid};`, (err, res) => {
         if (err)
         {
             console.log(err)

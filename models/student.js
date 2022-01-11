@@ -108,9 +108,8 @@ Student.createMarks = (req, result)=> {
 
 
 Student.updateProfile = (student, result)=> {
-    var update_student = sql.query(`update student set usn="${student.usn}", name="${student.name}", email="${student.email}",
-    department="${student.department}", gender="${student.gender}", phno="${student.phno}", semester="${student.semester}",
-    cgpa "${student.cgpa}", img "${student.img}", proctor="${student.pid}" where sid="${student.sid}";`, (err, res) => {
+    console.log(student)
+    var update_student = sql.query(`update student set usn="${student.usn}", name="${student.name}", email="${student.email}", department="${student.department}", gender="${student.gender}", phno="${student.phno}", semester="${student.semester}", cgpa="${student.cgpa}", img="${student.img}", proctor="${student.proctor}" where sid="${student.sid}";`, (err, res) => {
         if (err)
         {
             console.log(err)

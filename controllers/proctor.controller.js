@@ -64,7 +64,8 @@ exports.createProctor = (req, res)=> {
 }
 
 exports.updateProctor = (req, res)=> {
-    Proctor.update(req.data, (err, data) => {
+    console.log(req.body)
+    Proctor.update(req.body, (err, data) => {
         if(err)
         {
             if(err.type == "not_updated")
